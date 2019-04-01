@@ -1,9 +1,54 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>Basic Web Page</title>
-    </head>
-    <body>
-Hello World!
-    </body>
+
+<head>
+
+<script src=”https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+<script type=”text/javascript”>
+
+var Web3 = require(‘web3’);
+
+var web3 = new Web3(window.web3.currentProvider);
+
+const address = ‘0x011c311141d785bf5e08dd2be96152a7cdb31c30’;
+
+const abi = [
+
+[
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "renderHelloWorld",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	}
+]
+
+];
+
+var contract = web3.eth.contract(abi);
+
+var helloWorld = contract.at(address);
+
+helloWorld.renderHelloWorld.call(function(e, r) {
+
+console.log(r);
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+</body>
+
 </html>
